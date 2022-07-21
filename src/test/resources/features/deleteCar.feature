@@ -17,7 +17,7 @@ Feature: Delete Car
 	@INN-1595
 	Scenario: User can see the "Delete" button by hovering the mouse
 		When the user hovers the mouse over the three dots
-		Then the user should see the 'delete' option	
+		Then the user should see the delete option
 
 	#User Story :
 	#
@@ -29,8 +29,9 @@ Feature: Delete Car
 	#"Delete Confirmation" pops up should be displayed when the user clicks on the delete button
 	@INN-1596
 	Scenario: Delete Confirmation pops up
-		When the user clicks on delete icon
-		Then delete confirmation window pups up	
+		When the user hovers the mouse over the three dots
+		And the user clicks on delete icon
+		Then delete confirmation window pops up
 
 	#User Story :
 	#

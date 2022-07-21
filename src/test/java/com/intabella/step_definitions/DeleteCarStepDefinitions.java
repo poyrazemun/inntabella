@@ -8,6 +8,8 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import static org.junit.Assert.*;
+
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Wait;
@@ -19,19 +21,25 @@ public class DeleteCarStepDefinitions {
     DashboardPage dashboardPage = new DashboardPage();
     VehiclesPage vehiclesPage = new VehiclesPage();
     WebDriverWait wait = new WebDriverWait(Driver.getDriver(),20);
+    JavascriptExecutor js = (JavascriptExecutor) Driver.getDriver();
 
     //Test1
     @When("the user hovers the mouse over the three dots")
     public void the_user_hovers_the_mouse_over_the_three_dots() {
         action.moveToElement(vehiclesPage.threeDots).build().perform();
-        BrowserUtils.sleep(5);
+        BrowserUtils.sleep(2);
     }
 
-    @Then("the user should see the {string} option")
-    public void the_user_should_see_the_option(String string) {
+    @Then("the user should see the delete option")
+    public void the_user_should_see_the_delete_option(){
 
-        assertTrue(vehiclesPage.deleteIcon.isDisplayed());
+        //js.executeScript("arguments[0].scrollIntoView(true);", vehiclesPage.deleteIcon);
 
+       // vehiclesPage.deleteIcon.click();
+
+       // BrowserUtils.clickWithJS(vehiclesPage.deleteIcon);
+        BrowserUtils.sleep(3);
+        assertTrue(vehiclesPage.confirmationPopUp.isDisplayed());
     }
 
 
@@ -41,19 +49,24 @@ public class DeleteCarStepDefinitions {
     public void the_user_clicks_on_delete_icon() {
 
     }
-    @Then("delete confirmation window pups up")
-    public void delete_confirmation_window_pups_up() {
-
+    @Then("delete confirmation window pops up")
+    public void delete_confirmation_window_pops_up() {
+        BrowserUtils.sleep(5);
+        assertTrue(vehiclesPage.confirmationPopUp.isDisplayed());
     }
 
 
     //Test3
     @When("the user confirms the delete")
     public void the_user_confirms_the_delete() {
-
+        BrowserUtils.sleep(5);
+        vehiclesPage.deleteConfirmationButton.click();
     }
     @Then("{string} message is displayed")
     public void message_is_displayed(String string) {
+
+        assertTrue(vehiclesPage.itemDeletedMessage.isDisplayed());
+
 
     }
 
@@ -61,6 +74,10 @@ public class DeleteCarStepDefinitions {
     //Test4
     @When("the user clicks on any car on the table")
     public void the_user_clicks_on_any_car_on_the_table() {
+
+        vehiclesPage.viewPerPageDropDown.click();
+        vehiclesPage.viewPerPage.get(4).click();
+        System.out.println("vehiclesPage.totalNumberOfCars = " + vehiclesPage.totalNumberOfCars);
 
     }
     @When("the user lands on General Information page")
