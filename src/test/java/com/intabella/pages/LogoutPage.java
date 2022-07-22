@@ -19,9 +19,14 @@ public class LogoutPage {
     public WebElement LogoutButton;
 
 
-
     public void LogoutFunction() {
         userMenu.click();
         LogoutButton.click();
+    }
+
+    public void stepBackButton() {
+
+
+
     }
 }
