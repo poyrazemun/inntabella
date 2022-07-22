@@ -73,7 +73,7 @@ public class VehicleTableArrangements_StepDefinitions {
         
     }
 
-    @Then("user should see {int} vehicle information\\/rows")
-    public void userShouldSeeVehicleInformationRows(int arg0) {
+    @Then("user should see {int} vehicle information")
+    public void userShouldSeeVehicleInformation(int arg0) {
     }
 }
