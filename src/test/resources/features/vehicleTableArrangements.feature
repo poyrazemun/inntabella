@@ -25,7 +25,7 @@ Feature: Vehicle Table Arrangements
   Verify that user can arrange rows/vehicle numbers by clicking on the View Per Page button
 
     When user clicks 10 under the View Per Page dropdown menu
-    Then user should see 10 vehicle information/rows
+    Then user should see 10 vehicle information
 
   @INN-1611
   Scenario: Verify that user can sort a column in ascending or descending order by clicking the column name
