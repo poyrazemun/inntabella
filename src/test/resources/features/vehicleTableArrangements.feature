@@ -1,4 +1,4 @@
-@INN-1613
+@INN-1613 @poyraz
 Feature: Vehicle Table Arrangements
 
   Background: User is already logged in and navigated to Fleet Vehicles Page
@@ -21,7 +21,8 @@ Feature: Vehicle Table Arrangements
   @INN-1610
   Scenario: Verify that user can arrange rows/vehicle numbers by clicking on the View Per Page button
 
-    When user clicks 10 under the View Per Page dropdown menu
+    When user clicks the View Per Page dropdown menu
+    And user clicks "10" under the View Per Page dropdown menu
     Then user should see 10 vehicle information
 
   @INN-1611
