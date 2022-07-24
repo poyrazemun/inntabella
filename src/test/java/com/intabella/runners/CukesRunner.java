@@ -15,7 +15,7 @@ import org.junit.runner.RunWith;
         features = "src/test/resources/features",
         glue = "com/intabella/step_definitions",
         dryRun = false,
-        tags = "@INN-1595"
+        tags = "@INN-1609"
 )
 
 public class CukesRunner {

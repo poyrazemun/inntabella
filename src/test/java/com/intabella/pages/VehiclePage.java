@@ -37,4 +37,8 @@ public class VehiclePage extends BasePage {
     @FindBy(xpath = "//label[@class='dib'][3]")
     public WebElement totalNumberOfRecords;
 
+
+    @FindBy(xpath = "//a[@class='dropdown-item']")
+    public List<WebElement> viewPerPageNumbers;
+
 }
