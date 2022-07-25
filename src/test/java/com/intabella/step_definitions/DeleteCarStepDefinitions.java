@@ -31,6 +31,7 @@ public class DeleteCarStepDefinitions {
     GeneralInfoPage generalInfoPage = new GeneralInfoPage();
     WebDriverWait wait = new WebDriverWait(Driver.getDriver(), 20);
     JavascriptExecutor js = (JavascriptExecutor) Driver.getDriver();
+    WebElement chassisNumber;
 
 
 
@@ -64,7 +65,6 @@ public class DeleteCarStepDefinitions {
     //Test3
     @When("the user confirms the delete")
     public void the_user_confirms_the_delete() {
-
         vehiclesPage.deleteConfirmationButton.click();
         BrowserUtils.sleep(2);
     }
@@ -79,12 +79,16 @@ public class DeleteCarStepDefinitions {
     //Test4
     @When("the user clicks on any car on the table")
     public void the_user_clicks_on_any_car_on_the_table() {
-        int totalNumberOfCars = VehiclesPage.getTotalNumber(vehiclesPage.getTotalRecords());
+        vehiclesPage.waitUntilLoaderScreenDisappear();
+        int totalNumberOfCars = VehiclesPage.getTotalNumber(vehiclesPage.getTotalRecords()) % 100;
         System.out.println("totalNumberOfCars = " + totalNumberOfCars);
-        int randomInt = (int) (Math.random() * /*totalNumberOfCars*/25 + 1);
+        vehiclesPage.viewPerPageDropDown.click();
+        vehiclesPage.viewPerPage.get(3).click();
+        int randomInt = (int) (Math.random() * totalNumberOfCars + 1);
         System.out.println("randomInt = " + randomInt);
         vehiclesPage.waitUntilLoaderScreenDisappear();
-        vehiclesPage.getXthRowOfCarsTable(randomInt).click();
+        WebElement aCarFromTheTable = VehiclesPage.getXthRowOfCarsTable(randomInt);
+        aCarFromTheTable.click();
     }
 
     @When("the user lands on General Information page")
@@ -95,11 +99,16 @@ public class DeleteCarStepDefinitions {
     @When("clicks on delete button")
     public void clicks_on_delete_button() {
         generalInfoPage.waitUntilLoaderScreenDisappear();
+        chassisNumber = generalInfoPage.chassisNumber;
+        System.out.println("chassisNumber.getText() = " + chassisNumber.getText());
+        wait.until(ExpectedConditions.elementToBeClickable(generalInfoPage.deleteButton));
         generalInfoPage.deleteButton.click();
     }
 
     @Then("the {string} message should be displayed")
     public void the_message_should_be_displayed(String string) {
+        vehiclesPage.viewPerPageDropDown.click();
+        vehiclesPage.viewPerPage.get(3).click();
         assertEquals(string, vehiclesPage.carDeletedMessage.getText());
     }
 
@@ -108,19 +117,11 @@ public class DeleteCarStepDefinitions {
     @Then("the deleted car is removed from the table")
     public void the_deleted_car_is_removed_from_the_table() {
         vehiclesPage.waitUntilLoaderScreenDisappear();
-        boolean isRemoved = true;
-        for (int i = 0; i < vehiclesPage.allChassisNumbers.size(); i++) {
-            if(generalInfoPage.chassisNumber.getText().equals(vehiclesPage.allChassisNumbers.get(i).getText()))
-                isRemoved = false;
-        }
-
-        assertTrue(isRemoved);
+        vehiclesPage.viewPerPageDropDown.click();
+        vehiclesPage.viewPerPage.get(3).click();
+        System.out.println("vehiclesPage.allChassisNumbers = " + vehiclesPage.allChassisNumbers);
+        List<WebElement> newAllChassis = vehiclesPage.allChassisNumbers;
+        assertFalse(newAllChassis.contains(chassisNumber));
     }
-
-
-
-
-
-
 
 }

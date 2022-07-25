@@ -16,7 +16,7 @@ public class VehiclesPage extends BasePage{
 
 
 
-   public WebElement getXthRowOfCarsTable(int i){ // gets the given row of car from the table
+   public static WebElement getXthRowOfCarsTable(int i){ // gets the given row of car from the table
       return Driver.getDriver().findElement(By.xpath("//tbody/tr[" + i + "]"));
    }
 
@@ -24,12 +24,6 @@ public class VehiclesPage extends BasePage{
 
    @FindBy (xpath = "//tbody/tr[1]/td[21]")
    public WebElement threeDots;
-
-   @FindBy (xpath = "//div[@class='dropdown']")
-   public List<WebElement> dropdown;
-
-   @FindBy (xpath = "(//ul[@class='dropdown-menu dropdown-menu__action-cell launchers-dropdown-menu'][1]/li/ul/li/a[@title='Delete'])[1]") //  (//a[@title='Delete'])[1]
-   public WebElement deleteIcon;
 
    @FindBy (xpath = "//*[.='Are you sure you want to delete this item?']")
    public WebElement confirmationPopUp;
@@ -61,19 +55,18 @@ public class VehiclesPage extends BasePage{
            "//li[@class='launcher-item'][3]")
    public WebElement deleteButton;
 
-
    public List<WebElement> allChassisNumbers = Driver.getDriver().findElements(By.xpath("//tbody/tr/td[6]"));
 
 
-   public static int getTotalNumber(String str){
-      String result = "";
+   public static int getTotalNumber(String str){ // some cool stuff here with StringBuilder
+      StringBuilder result = new StringBuilder();
       for (int i = 0; i < str.length(); i++) {
          if(isDigit(str.charAt(i))){
-            result+=str.charAt(i);
+            result.append(str.charAt(i));
          }
       }
-      if(!result.isEmpty())
-      return Integer.parseInt(result);
+      if(result.length() > 0)
+      return Integer.parseInt(result.toString());
       return 0;
    }
 
