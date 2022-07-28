@@ -39,14 +39,16 @@ public class FilterMenu_StepDefinitions {
 	@When("the user clicks on manage filter button")
 	public void the_user_clicks_on_manage_filter_button() {
 
-
+		filterMenuPage.manageFiltersButton.click();
 
 	}
 
 	@Then("all names under manage filters menu are clickable")
 	public void all_names_under_manage_filters_menu_are_clickable() {
 
-
+		for (WebElement filterType : filterMenuPage.filterNames) {
+			Assert.assertTrue(filterMenuPage.isClickable(filterType));
+		}
 
 	}
 
