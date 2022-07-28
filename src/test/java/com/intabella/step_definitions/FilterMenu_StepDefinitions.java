@@ -22,14 +22,15 @@ public class FilterMenu_StepDefinitions {
 	@When("the user clicks on filter button")
 	public void the_user_clicks_on_filter_button() {
 
-
+		BrowserUtils.waitForClickablility(filterMenuPage.filtersButton,5);
+		filterMenuPage.filtersButton.click();
 
 	}
 
 	@Then("manage filter button is visible")
 	public void manage_filter_button_is_visible() {
 
-
+		Assert.assertTrue(filterMenuPage.manageFiltersButton.isDisplayed());
 
 	}
 
