@@ -1,40 +1,51 @@
 package com.intabella.step_definitions;
 
+import com.intabella.pages.FilterMenuPage;
+import com.intabella.utilities.BrowserUtils;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import org.junit.Assert;
+import org.openqa.selenium.WebElement;
 
 public class FilterMenu_StepDefinitions {
 
 
+	FilterMenuPage filterMenuPage = new FilterMenuPage();
+
 	@Then("filter button is hidden")
 	public void filter_button_is_hidden() {
-		// Write code here that turns the phrase above into concrete actions
-		throw new io.cucumber.java.PendingException();
+
+		Assert.assertFalse(filterMenuPage.manageFiltersButton.isDisplayed());
 	}
 
 	@When("the user clicks on filter button")
 	public void the_user_clicks_on_filter_button() {
+
+
 
 	}
 
 	@Then("manage filter button is visible")
 	public void manage_filter_button_is_visible() {
 
+
+
 	}
 
-	//@Given("the user clicks on filter button")
-	//public void the_user_clicks_on_filter_button() {
 
-	//}
 
 	@When("the user clicks on manage filter button")
 	public void the_user_clicks_on_manage_filter_button() {
+
+
 
 	}
 
 	@Then("all names under manage filters menu are clickable")
 	public void all_names_under_manage_filters_menu_are_clickable() {
+
+
 
 	}
 
