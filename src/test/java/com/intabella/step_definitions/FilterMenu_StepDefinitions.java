@@ -97,6 +97,10 @@ public class FilterMenu_StepDefinitions {
 	@Then("all filters are gone")
 	public void all_filters_are_gone() {
 
+		for (int i = 0; i < flag; i++) {
+			Assert.assertFalse(filterMenuPage.filteredMenusLocations.get(i).isDisplayed());
+		}
+
 	}
 
 }
