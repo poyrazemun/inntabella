@@ -1,3 +1,4 @@
+@INN-1638 @nur
 Feature: Add Event 2
 
 	Background:
