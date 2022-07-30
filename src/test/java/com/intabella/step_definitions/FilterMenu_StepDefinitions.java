@@ -71,10 +71,19 @@ public class FilterMenu_StepDefinitions {
 	@When("the user clicks {int} filters")
 	public void the_user_clicks_filters(Integer int1) {
 
+		flag = int1;
+		for (int i = 0; i < int1; i++) {
+			String name = filterMenuPage.filterNames.get(i).getAttribute("title");
+			filterMenuPage.filterName(name).click();
+			BrowserUtils.waitFor(1);
+		}
+
 	}
 
 	@Then("filtered names are displayed on the filter menu place")
 	public void filtered_names_are_displayed_on_the_filter_menu_place() {
+
+		Assert.assertEquals(flag, filterMenuPage.filteredMenusLocations.size());
 
 	}
 
