@@ -37,4 +37,21 @@ public class VehiclePage extends BasePage {
     @FindBy(xpath = "//label[@class='dib'][3]")
     public WebElement totalNumberOfRecords;
 
+    @FindBy(xpath = "//a[@class='dropdown-item']")
+    public List<WebElement> viewPerPageNumbers;
+
+    @FindBy(xpath = "//tr[@class='grid-row']")
+    public List<WebElement> vehicleInformationCount;
+
+    @FindBy(xpath = "//span[.='Model Year']")
+    public WebElement modelYearColumn;
+
+    @FindBy(xpath = "//tr//td[@class='string-cell grid-cell grid-body-cell grid-body-cell-ModelYear']")
+    public List<WebElement> modelYears;
+
+    @FindBy(xpath = "//a[@title='Reset']")
+    public WebElement resetButton;
+
+
+
 }
