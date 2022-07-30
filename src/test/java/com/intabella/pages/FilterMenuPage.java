@@ -1,6 +1,8 @@
 package com.intabella.pages;
 
+import com.intabella.utilities.BrowserUtils;
 import com.intabella.utilities.Driver;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.FindBys;
@@ -29,6 +31,18 @@ public class FilterMenuPage {
 	@FindBys({@FindBy(xpath = "//div[@class='btn filter-criteria-selector oro-drop-opener oro-dropdown-toggle filter-default-value']")})
 	public List<WebElement> filteredMenusLocations;
 
+	@FindBy(xpath = "//li[@class='select2-results-dept-0 select2-result select2-result-selectable'][.='Sedan']")
+	public WebElement sedan;
+
+	public WebElement filterName(String name) {
+		return Driver.getDriver().findElement(By.xpath("//span[contains(text(),'" + name + "')]/../input"));
+	}
+
+	public WebElement filterNames(String name) {
+		return Driver.getDriver().findElement(By.xpath("//input[@value='" + name + "']"));
+	}
+
+
 	public boolean isClickable(WebElement element) {
 		try {
 			WebDriverWait wait = new WebDriverWait(Driver.getDriver(), 5);
@@ -38,6 +52,19 @@ public class FilterMenuPage {
 			return false;
 		}
 	}
+
+	public boolean hasCompactOrSedan(List<WebElement> elements) {
+		List<String> elementsText = BrowserUtils.getElementsText(elements);
+		for (String each : elementsText) {
+			if(each.equals("Compact")||each.equals("Sedan")){
+				return false;
+			}
+		}
+		return true;
+	}
+
+
+
 
 
 

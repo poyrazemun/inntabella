@@ -13,6 +13,8 @@ public class FilterMenu_StepDefinitions {
 
 	FilterMenuPage filterMenuPage = new FilterMenuPage();
 
+	int flag;
+
 	@Then("filter button is hidden")
 	public void filter_button_is_hidden() {
 
@@ -55,6 +57,15 @@ public class FilterMenu_StepDefinitions {
 	@Then("user enters filter name on the filter input box and corresponding name is displayed")
 	public void user_enters_filter_name_on_the_filter_input_box_and_corresponding_name_is_displayed() {
 
+		for (WebElement filterType : filterMenuPage.filterNames) {
+			String name = filterType.getAttribute("title");
+			filterMenuPage.filterInputBox.sendKeys(name);
+			BrowserUtils.waitFor(1);
+			Assert.assertTrue(filterMenuPage.filterName(name).isDisplayed());
+			filterMenuPage.filterInputBox.clear();
+		}
+
+
 	}
 
 	@When("the user clicks {int} filters")
@@ -70,6 +81,8 @@ public class FilterMenu_StepDefinitions {
 	@When("the user clicks reset button")
 	public void the_user_clicks_reset_button() {
 
+		filterMenuPage.resetButton.click();
+		BrowserUtils.waitFor(2);
 	}
 
 	@Then("all filters are gone")
