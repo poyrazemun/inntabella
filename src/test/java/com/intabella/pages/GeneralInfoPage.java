@@ -10,4 +10,9 @@ public class GeneralInfoPage extends BasePage{
 
     @FindBy (xpath = "(//div[@class='control-label'])[5]")
     public WebElement chassisNumber;
+
+
+    @FindBy(xpath = "//*[@id=\"container\"]/div[2]/div[1]/div/div/div[1]/div[1]/div[3]/a")
+    public WebElement addEvent;
+
 }
