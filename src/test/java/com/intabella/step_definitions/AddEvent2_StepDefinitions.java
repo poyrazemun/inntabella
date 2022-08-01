@@ -53,19 +53,16 @@ public class AddEvent2_StepDefinitions {
     }
 
     //------------------
-    @Then("user click {string} checkbox")
-    public void user_click_checkbox(String string) {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
-    }
-
 
     @When("user clicks {string} checkbox")
     public void user_clicks_checkbox(String string) {
-
-
+    addEvent2Page.allDayCheckbox.click();
+    Assert.assertTrue(addEvent2Page.allDayCheckbox.isSelected());
 
     }
+
+    //------------------
+
     @Then("user can choose {string} #Daily, Weekly, Monthly, Yearly")
     public void user_can_choose_daily_weekly_monthly_yearly(String string) {
         Select occurrence = new Select(addEvent2Page.recurrenceRepeats);
@@ -80,3 +77,5 @@ public class AddEvent2_StepDefinitions {
         }
 
     }
+
+}
