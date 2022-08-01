@@ -51,4 +51,7 @@ public class VehiclePage extends BasePage {
 
     @FindBy(xpath = "//a[@title='Reset']")
     public WebElement resetButton;
+
+
+
 }
