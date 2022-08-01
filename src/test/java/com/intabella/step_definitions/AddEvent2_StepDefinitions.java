@@ -100,5 +100,6 @@ public class AddEvent2_StepDefinitions {
     @Then("sees calender event at the bottom of the page")
     public void seesCalenderEventAtTheBottomOfThePage() {
         Assert.assertTrue(generalInfoPage.calendarEvent.isDisplayed());
+
     }
 }
