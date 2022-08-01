@@ -10,5 +10,15 @@ public class AddEvent2Page {
     @FindBy(xpath = "//span[@class='color empty-color']")
     public WebElement colorMark;
 
+    @FindBy(xpath = "//input[@data-name='field__all-day']")
+    public WebElement allDayCheckbox;
 
+    @FindBy(xpath = "//*[@data-name=\"recurrence-repeat\"]")
+    public WebElement repeatCheckbox;
+
+    @FindBy(xpath = "//*[@class=\"recurrence-repeats__select\"] ")
+    public WebElement recurrenceRepeats;
+
+    @FindBy(xpath = " ")
+    public WebElement controlSections;
 }

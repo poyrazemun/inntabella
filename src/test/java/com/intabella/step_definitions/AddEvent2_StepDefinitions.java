@@ -13,7 +13,10 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.util.List;
 
 public class AddEvent2_StepDefinitions {
     Actions action = new Actions(Driver.getDriver());
@@ -32,16 +35,13 @@ public class AddEvent2_StepDefinitions {
     @When("clicks on add event button")
     public void clicks_on_add_event_button() {
         generalInfoPage.waitUntilLoaderScreenDisappear();
-        action.moveToElement(addEvent).build().perform();
+        generalInfoPage.addEvent.click();
 
     }
 
     @And("{string} page pops up")
     public void pagePopsUp(String addEvent) {
         Assert.assertTrue(addEvent2Page.addEventPopUp.isDisplayed());
-        Assert.assertTrue(addEvent2Page.addEventPopUp.getText().equals(addEvent));
-        System.out.println(addEvent2Page.addEventPopUp.getText());
-
 
     }
 
@@ -49,7 +49,7 @@ public class AddEvent2_StepDefinitions {
     public void user_clicks_one(String string) {
         addEvent2Page.colorMark.click();
         Assert.assertTrue(addEvent2Page.colorMark.isSelected());
-        System.out.println(addEvent2Page.colorMark.isSelected());
+
     }
 
     //------------------
@@ -62,26 +62,21 @@ public class AddEvent2_StepDefinitions {
 
     @When("user clicks {string} checkbox")
     public void user_clicks_checkbox(String string) {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+
+
+
     }
     @Then("user can choose {string} #Daily, Weekly, Monthly, Yearly")
     public void user_can_choose_daily_weekly_monthly_yearly(String string) {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+        Select occurrence = new Select(addEvent2Page.recurrenceRepeats);
+
+        List<WebElement> op = occurrence.getOptions();
+        int size = op.size();
+        for (int i = 0; i < size; i++) {
+            String options = op.get(i).getText();
+            System.out.println(options);
+
+
+        }
+
     }
-
-    @Then("user can choose {string} #Never, After, By")
-    public void user_can_choose_never_after_by(String string) {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
-    }
-
-    @Then("sees calender event at the bottom of the page")
-    public void sees_calender_event_at_the_bottom_of_the_page() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
-    }
-
-
-}

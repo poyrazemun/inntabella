@@ -8,7 +8,8 @@ Feature: Add Event 2
 		
 
 	#The store manager should be able to mark the event with any color at the "Add Event" pop-up.
-	@INN-1631 @INN-1638
+
+	 @INN-1638
 	Scenario: Mark event with any color
 		When the user clicks on any car on the table
 			And the user lands on General Information page
@@ -23,7 +24,7 @@ Feature: Add Event 2
 			And the user lands on General Information page
 			And clicks on add event button
 			And "Add Event" page pops up
-			Then user click "All-day event" checkbox	
+			Then user clicks "All-day event" checkbox
 
 	#The store manager should be able to repeat the actions from the repeats dropdown menu:
 	#Repeat options should include the options as follows: Daily, Weekly, Monthly, Yearly
