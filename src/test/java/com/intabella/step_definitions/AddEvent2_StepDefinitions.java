@@ -63,6 +63,12 @@ public class AddEvent2_StepDefinitions {
 
     //------------------
 
+    @And("user clicks repeat checkbox")
+    public void userClicksRepeatCheckbox() {
+        addEvent2Page.repeatCheckbox.click();
+        Assert.assertTrue(addEvent2Page.repeatCheckbox.isSelected());
+    }
+
     @Then("user can choose {string} #Daily, Weekly, Monthly, Yearly")
     public void user_can_choose_daily_weekly_monthly_yearly(String string) {
         Select occurrence = new Select(addEvent2Page.recurrenceRepeats);
@@ -72,10 +78,13 @@ public class AddEvent2_StepDefinitions {
         for (int i = 0; i < size; i++) {
             String options = op.get(i).getText();
             System.out.println(options);
-
-
         }
 
     }
 
+
+    @Then("user can choose {string} #Never, After, By")
+    public void userCanChooseNeverAfterBy(String arg0) {
+
+    }
 }

@@ -34,7 +34,7 @@ Feature: Add Event 2
 			And the user lands on General Information page
 			And clicks on add event button
 			And "Add Event" page pops up
-			And user clicks "repeat" checkbox
+			And user clicks repeat checkbox
 			Then user can choose "time period" #Daily, Weekly, Monthly, Yearly	
 
 	#Ending options should be as below and clickable by the store manager while adding an event: Never, After, By

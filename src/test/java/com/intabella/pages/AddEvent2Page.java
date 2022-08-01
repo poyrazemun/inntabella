@@ -19,6 +19,12 @@ public class AddEvent2Page {
     @FindBy(xpath = "//*[@class=\"recurrence-repeats__select\"] ")
     public WebElement recurrenceRepeats;
 
-    @FindBy(xpath = " ")
-    public WebElement controlSections;
+    @FindBy(xpath = "(//input[@type='radio']) [3] ")
+    public WebElement controlSectionNever;
+
+    @FindBy(xpath = "(//input[@type='radio']) [4] ")
+    public WebElement controlSectionAfter;
+
+    @FindBy(xpath = "(//input[@type='radio']) [5] ")
+    public WebElement controlSectionBy;
 }
