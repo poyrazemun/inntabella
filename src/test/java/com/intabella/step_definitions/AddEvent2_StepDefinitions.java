@@ -85,6 +85,20 @@ public class AddEvent2_StepDefinitions {
 
     @Then("user can choose {string} #Never, After, By")
     public void userCanChooseNeverAfterBy(String arg0) {
+    
+        addEvent2Page.controlSectionNever.click();
+        Assert.assertTrue(addEvent2Page.controlSectionNever.isSelected());
+        
+        addEvent2Page.controlSectionAfter.click();
+        Assert.assertTrue(addEvent2Page.controlSectionAfter.isSelected());
 
+        addEvent2Page.controlSectionBy.click();
+        Assert.assertTrue(addEvent2Page.controlSectionBy.isSelected());
+    }
+
+
+    @Then("sees calender event at the bottom of the page")
+    public void seesCalenderEventAtTheBottomOfThePage() {
+        Assert.assertTrue(generalInfoPage.calendarEvent.isDisplayed());
     }
 }
