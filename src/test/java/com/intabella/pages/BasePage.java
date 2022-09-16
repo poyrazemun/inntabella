@@ -16,11 +16,11 @@ public abstract class BasePage  {
 
     @FindBy(css = "div[class='loader-mask shown']")
     @CacheLookup
-    protected WebElement loaderMask;
+    public WebElement loaderMask;
 
     public void waitUntilLoaderScreenDisappear() {
         try {
-            WebDriverWait wait = new WebDriverWait(Driver.getDriver(), 8);
+            WebDriverWait wait = new WebDriverWait(Driver.getDriver(), 20);
             wait.until(ExpectedConditions.invisibilityOf(loaderMask));
         } catch (Exception e) {
             e.printStackTrace();

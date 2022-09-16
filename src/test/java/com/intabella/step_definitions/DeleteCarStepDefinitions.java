@@ -16,6 +16,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.CacheLookup;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Wait;
@@ -76,17 +77,35 @@ public class DeleteCarStepDefinitions {
     }
 
 
+
+
+
     //Test4
     @When("the user clicks on any car on the table")
     public void the_user_clicks_on_any_car_on_the_table() {
-        vehiclesPage.waitUntilLoaderScreenDisappear();
-        int totalNumberOfCars = VehiclesPage.getTotalNumber(vehiclesPage.getTotalRecords()) % 100;
-        System.out.println("totalNumberOfCars = " + totalNumberOfCars);
+
+        try {
+            WebDriverWait wait = new WebDriverWait(Driver.getDriver(), 20);
+            wait.until(ExpectedConditions.invisibilityOf(vehiclesPage.loaderMask));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
         vehiclesPage.viewPerPageDropDown.click();
         vehiclesPage.viewPerPage.get(3).click();
+
+        try {
+            WebDriverWait wait = new WebDriverWait(Driver.getDriver(), 20);
+            wait.until(ExpectedConditions.invisibilityOf(vehiclesPage.loaderMask));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        int totalNumberOfCars = VehiclesPage.getTotalNumber(vehiclesPage.getTotalRecords()) % 100;
+        System.out.println("totalNumberOfCars = " + totalNumberOfCars);
+
         int randomInt = (int) (Math.random() * totalNumberOfCars + 1);
         System.out.println("randomInt = " + randomInt);
-        vehiclesPage.waitUntilLoaderScreenDisappear();
+
         WebElement aCarFromTheTable = VehiclesPage.getXthRowOfCarsTable(randomInt);
         aCarFromTheTable.click();
     }
